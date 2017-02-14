@@ -17,6 +17,7 @@ var mysql = require('mysql');
 
 // all environments
 app.set('port', process.env.PORT || 4300);
+app.set('db_host', process.env.DB_HOST);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(express.favicon());
@@ -41,9 +42,10 @@ app.use(
     
     connection(mysql,{
         
-        host: 'localhost',
-        user: 'root',
-        password : '',
+      //  host: 'localhost',
+        host: app.get('db_host'),
+        user: 'aleti',
+        password : 'aleti1234',
         port : 3306, //port mysql
         database:'nodejs'
 
